@@ -33,12 +33,6 @@ require_once '../connect.php';
      }else{
         echo "ไม่มีข้อมูล User คนนี้";
      }
-
-   
-
-
-
-
      
  }else{
      echo "ไม่ถูกต้อง";
