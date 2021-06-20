@@ -71,9 +71,9 @@
        data: $(this).serialize()
      }).done(function(resp) {
        toastr.success('เข้าสู่ระบบเรียบร้อย')
-      //  setTimeout(() => {
-      //    location.href = 'pages/dashboard/'
-      //  }, 800)
+       setTimeout(() => {
+         location.href = 'pages/dashboard/'
+       }, 800)
      }).fail(function(resp) {
        toastr.error('ไม่สามารถเข้าสู่ระบบได้')
      })

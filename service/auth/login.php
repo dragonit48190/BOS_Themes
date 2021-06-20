@@ -20,7 +20,16 @@ require_once '../connect.php';
      $row = $stmt->fetch(PDO::FETCH_OBJ);
 
      if(!empty($row) && password_verify($_POST['password'], $row->password) ){
-        echo json_encode($row);
+        $_SESSION['AD_ID'] = $row->u_id;
+        $_SESSION['AD_FIRSTNAME'] = $row->firstname;
+        $_SESSION['AD_LASTNAME'] = $row->lastname;
+        $_SESSION['AD_USERNAME'] = $row->username;
+        $_SESSION['AD_IMAGE'] = $row->image;
+        $_SESSION['AD_STATUS'] = $row->status;
+        $_SESSION['AD_LOGIN'] = $row->update_at;
+
+        echo json_encode("SUCCESS");
+
      }else{
         echo "ไม่มีข้อมูล User คนนี้";
      }
