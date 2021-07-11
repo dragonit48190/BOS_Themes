@@ -36,7 +36,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text px-2">ชื่อผู้ใช้งาน</div>
                   </div>
-                  <input type="text" class="form-control" name="username" placeholder="username">
+                  <input type="text" class="form-control" name="username" placeholder="username" required>
                 </div>
               </div>
               <div class="form-group col-sm-12">
@@ -44,7 +44,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text px-3">รหัสผ่าน</div>
                   </div>
-                  <input type="password" class="form-control" name="password" placeholder="password">
+                  <input type="password" class="form-control" name="password" placeholder="password" required>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary btn-block"> เข้าสู่ระบบ</button>
@@ -62,6 +62,9 @@
 <script src="plugins/toastr/toastr.min.js"></script>
 <script>
   $(function() {
+      toastr.options = {
+      "positionClass": "toast-top-center"
+      }
     /** Ajax Submit Login */
    $("#formLogin").submit(function(e){
      e.preventDefault()
@@ -70,11 +73,13 @@
        url: "service/auth/login.php",
        data: $(this).serialize()
      }).done(function(resp) {
+       window.toastr.remove()
        toastr.success('เข้าสู่ระบบเรียบร้อย')
        setTimeout(() => {
          location.href = 'pages/dashboard/'
        }, 800)
      }).fail(function(resp) {
+       window.toastr.remove()
        toastr.error('ไม่สามารถเข้าสู่ระบบได้')
      })
    })
